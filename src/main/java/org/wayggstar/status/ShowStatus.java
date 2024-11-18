@@ -12,6 +12,7 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerSwapHandItemsEvent;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.wayggstar.status.commands.Balance;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -153,10 +154,12 @@ public class ShowStatus implements Listener {
             String health = "[§a체력 §rLv." + stat.getHealth() + "]";
             String strength = "[§4근력 §rLv." + stat.getStrength() + "]";
             String agility = "[§b민첩 §rLv." + stat.getAgility() + "]";
-
-            hologram.getLines().appendText(health);
-            hologram.getLines().appendText(strength);
+            double balance = VaultMoney.getEconomy().getBalance(player);
+            int newbalance = (int) balance;
+            hologram.getLines().appendText("§b잔액§r :" +ChatColor.GREEN + newbalance + " §e코인");
+            hologram.getLines().appendText(health + " " + strength);
             hologram.getLines().appendText(agility);
+
         }
     }
 }
