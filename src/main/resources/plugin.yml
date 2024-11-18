@@ -1,0 +1,3 @@
+name: Status
+version: '${project.version}'
+main: org.wayggstar.status.Status
