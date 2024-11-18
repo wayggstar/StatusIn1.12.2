@@ -1,3 +1,7 @@
 name: Status
 version: '${project.version}'
 main: org.wayggstar.status.Status
+depend: [HolographicDisplays, PlaceholderAPI, Vault, Essentials]
+commands:
+  코인:
+    description: 플레이어의 잔액을 확인합니다.

@@ -2,20 +2,26 @@ package org.wayggstar.status;
 
 
 import net.milkbowl.vault.chat.Chat;
-import net.milkbowl.vault.permission.Permission;
+import net.milkbowl.vault.economy.Economy;
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.RegisteredServiceProvider;
-import org.bukkit.plugin.java.JavaPlugin;
 
 
-public class Economy extends JavaPlugin {
+public class VaultMoney{
     private static Economy economy = null;
-    private static Permission permission = null;
     private static Chat chat = null;
 
-    private Economy(){
+    public static void setUpEconomy(){
+        RegisteredServiceProvider<Economy> rsp = Bukkit.getServicesManager().getRegistration(Economy.class);
+        if (rsp != null){
+            economy = rsp.getProvider();
+            Bukkit.getLogger().info("Vault Economy 시스템 연결 성공!");
+        }else {
+            Bukkit.getLogger().severe("Vault Economy 시스템을 찾을 수 없습니다!");
+        }
     }
 
-    private static void setUpEconomy(){
-        RegisteredServiceProvider.
+    public static Economy getEconomy(){
+        return economy;
     }
 }
